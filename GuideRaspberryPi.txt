@@ -119,26 +119,26 @@ GUIDE BILEKI    ---   Need translation... Anyone wanting to help...
 	df -h
 		Este comando irá listar todos os dispositivos montados.
 
-- Passo 3: Descobrir qual dos dispositivos montados é o referente ao cartão de memória e desmontar ele com o comando:
-	umount /dev/sdd1
-		onde sdd1 deve ser substituído pela unidade referente ao cartão.
+- Passo 3: Descobrir qual dos dispositivos montados é o referente ao cartão de memória normalmente /dev/mmcblk0p1 ou /dev/ssd1 e desmontar ele com o comando:
+	umount /dev/mmcblk0p1
+		onde mmcblk0p1(ou ssd1) deve ser substituído pela unidade referente ao cartão.
 
 - Passo 4: Acessar a pasta na qual o arquivo de imagem do sistema operacional está salvo e executar o comando: 
-	dd bs=4M if=2015-05-05-raspbian-wheezy.img of=/dev/sdd, 
-		onde sdd é a unidade referente ao cartão de memória, sem a partição, no caso mmcblk0, não mmcblk0p1.  
-	- Warning: Do not get the name of the unit Wrong!!!!!  It may DESTROY your hard drive!!!!
+	dd bs=4M if=2015-05-05-raspbian-wheezy.img of=/dev/mmcblk0, 
+		onde mmcblk0(ou ssd) é a unidade referente ao cartão de memória, sem a partição, no caso mmcblk0(ou ssd), não mmcblk0p1(ou ssd1).  
+	- Warning: Não confunda com a unidade de disco, se não vai acabar com seu SO!!!
 
 - Passo 5: Após finalizar a gravação da imagem descrita no Passo 4, antes de remover o cartão SD, execute o comando
-	"sync"
+	sync
 		então remova-o e insira-o na Raspberry Pi conectando um cabo de rede com acesso à internet, um teclado USB e um cabo HDMI ligado a um monitor na Raspberry Pi. Após isto, devemos alimentar a Raspberry Pi com uma fonte de 5V e pelo menos 700mA para ligarmos a Raspberry Pi.
 		
 - Passo 6: A partir deste passo todos os passos são executados direto na Raspberry Pi sem o auxílio do notebook. Ao realizar o primeiro boot, abrirá o “Raspi-Config”. Nele devemos configurar os seguintes itens:
 	- Setar a opção Expand File System (If you do not use NOOBS !)
-	- Change User Password: Original user "pi", original passward "raspberry"
-	- Em Advanced Options, foi setado o Acesso via ssh.
+	- Change User Password: Original user "pi", original password "raspberry"
+	- Em Advanced Options, setar como ENABLE o Acesso via ssh.
 	- Passo 7: Reinicie a Raspberry Pi.
 	- Passo 8: Logue com o usuário “pi” e o novo password.
-	- Passo 9: Caso o IP seja fixo, configure a rede seguindo o apêndice A antes de prosseguir.
+	- Passo 9: Caso o IP seja fixo, configure a rede seguindo o apêndice A ou se for DHCP, o apêndice D antes de prosseguir.
 	- Passo 10: Instalação das atualizações do SO: com a Raspberry Pi conectada na rede, execute o comando:
 			sudo apt-get update
 			sudo apt-get upgrade
@@ -149,19 +149,26 @@ GUIDE BILEKI    ---   Need translation... Anyone wanting to help...
 Apendice A: Configuração da Rede para IP fixo (ex. sala do Simoes)
 	-- Isso tem que fazer toda a vez pois apaga tudo quando reboota!!!
 	-- Pra funcionar sempre, ir pro Apêndice C
+	-- Tudo que estiver entre '<' e '>', deve ser substituído por valores da sua conexão
 	
-	sudo ifconfig eth0 IP netmask MASCARA
+	Executar no terminal o comando:
+	sudo ifconfig eth0 <IP> netmask <MASCARA>
+		Ex:
 		IP = 143.107.231.92
 		MASCARA = 255.255.255.192
 		ex.: sudo ifconfig eth0 143.107.231.92 netmask 255.255.255.192
 
-	sudo route add default gw GATEWAY
+	Executar no terminal o comando:
+	sudo route add default gw <GATEWAY>
+	Ex:
 		GATWAY = 143.107.231.65
 		ex.: sudo route add default gw 143.107.231.65
 
+	Executar no terminal o comando:
 	sudo nano /etc/resolv.conf
 		adicionar linha: 
 			nameserver 8.8.8.8
+		digitar:
 		Ctrl+O  -> Salvar
 		Ctrl+X  -> Sair
 		
@@ -171,39 +178,53 @@ Apendice A: Configuração da Rede para IP fixo (ex. sala do Simoes)
 			apertar ESC e :wq  pra sair e salvar
 			Reza e Xinga mais um pouco!!!
 
-	Ping www.google.com
-		Pra testar se ta funcionando!
+	Executar no terminal o comando:
+	ping www.google.com
+		Pra testar se tá funcionando!
 
-	sudo vi /etc/ssh/sshd_config
+	Dentro da USP as portas baixas são bloqueadas, então, caso esteja tentando conectar de um cabo de rede de dentro da USP, executar no terminal o comando:
+	sudo nano /etc/ssh/sshd_config
 		---trocar de Port 22 pra Port 22000
-		--> Isso so precisa fazer pra acessar por SSH, Não precisa pra internet!!!!
+		
 
 
 Apêndice B: Para se conectar a RaspberryPi por SSH do Notebook rodando linux
 
-No Notebook:
-	- Digitar no notebook rodando linux:
+Na RaspberryPi:
+	Executar no terminal o comando:
+	sudo nano /etc/network/interfaces
+	--alterar no arquivo de
+	
+		iface eth0 inet manual
+	
+	--para
+	
+		iface eth0 inet static
+			address 192.168.97.10
+			netmask 255.255.255.0
+			
+		E obviamente comentar as linhas que estiverem la'...
+		
+		digitar:
+		Ctrl+O  -> Salvar
+		Ctrl+X  -> Sair
+
+
+No Notebook, rodando linux:
+	Executar no terminal o comando:
 		sysctl -w net.ipv4.ip_forward=1
 
-	- Se quiser deixar isso permanente (não aconselhado por questões de falha de segurança!!!):
-		sudo nano /etc/sysctl.conf
-
-			e descomentar a linha:
-			# net.ipv4.ip forward=1
-
-
-Na RaspberryPi: (--Daqui para baixo, executar toda vez que ligar a raspberry!!)
-
-	ifconfig eth0 192.168.0.10 netmask 255.255.255.0
-		Obs1.: 192.168.0.10   sera' o ip da Raspberry na rede
-		Obs2.: o ip do notebook na rede deve iniciar com os mesmos 3 números: ex. 192.168.0.1
-		
+	Executar no terminal o comando:
+	ifconfig eth0 192.168.97.10 netmask 255.255.255.0
+		Obs1.: 192.168.97.10   será o ip da Raspberry na rede
+		Obs2.: o ip do notebook na rede deve iniciar com os mesmos 3 números: ex. 192.168.97
+	
+	Executar no terminal o comando:
 	sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 	
 
-Para se conectar a RaspberryPi basta conectar um cabo de rede entre o notebook e a Rasp e digitar no Notebook:
-
-	ssh pi@192.168.0.10
+Para se conectar a RaspberryPi basta conectar um cabo de rede entre o notebook e a Rasp, executar no terminal o comando:
+	ssh pi@192.168.97.10	--> esse e' o ip que voce colocou na raspberry
 
 
 Apêndice C - Static IP permanente que fica depois do reboot
@@ -331,15 +352,50 @@ Editar com: sudo nano /etc/network/interfaces
 	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 
-	-->> NAO TESTEI ESSE COMANDO, MAS TEM TUDO PRA FUNCIONAR sem precisar rebootar!!!!:
+	-->> restarta a parada de rede sem precisar rebootar!!!!:
 		sudo /etc/init.d/networking restart
 
+		
+		
+Apêndice D: Configure RaspberryPi to get a DHCP address from your router automatic
+
+	comment all other lines referent to eth0 (ex. iface eth0 inet static ...)
+	Include those tree lines:
+		auto eth0 
+		allow-hotplug eth0
+		iface eth0 inet dhcp
+		
+		
+		
 ------------------X-------------------X
 Manuel SIMOES
 ------------------X-------------------X
 
 1) Configurar o GCC para compilar otimizando para o ARM7 da RaspberryPi 2
 	GCC : gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard hello.c -o hello.exe
+	
+	Ou para não precisar digitar sempre essa linha, basta criar um arquivo que sobrepõe o GCC:
+	
+	a)Create a new file with the following contents:
+
+		#!/bin/sh
+		exec /usr/bin/gcc "$@" -march=armv7-a -mfpu=vfp -mfloat-abi=hard
+		
+	--Change /usr/bin/gcc to your actual compiler if that's not right on your system.
+
+	b)Save it as ~/bin/gcc.
+
+	c)Make the new script executable:
+
+		chmod +x ~/bin/gcc
+
+	d)Repeat to create another file for g++.
+
+	e)Add ~/bin to the start of your path:
+
+		export PATH=~/bin:$PATH
+	
+	e)Compile your project. Whenever your new scripts are on the path they will override whatever the makefile says.
 
 	gcc --help
 	gcc --target-help             -->  Help com parâmetros de otimização como o march
@@ -394,3 +450,4 @@ Code Exemple:
 		sudo ./blink
 		
 		
+

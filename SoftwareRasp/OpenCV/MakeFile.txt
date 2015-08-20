@@ -1,0 +1,5 @@
+canny:
+    g++ -g -o canny_filter canny_filter.cpp -I /usr/include/opencv `pkg-config opencv --libs`
+
+face_dec:
+    g++ -g -o facedetect facedetect.cpp -I /usr/include/opencv `pkg-config opencv --libs`
