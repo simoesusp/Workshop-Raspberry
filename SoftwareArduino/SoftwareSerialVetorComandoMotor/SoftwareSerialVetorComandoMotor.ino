@@ -26,8 +26,6 @@
 
 #include <PWM.h>
 
-int brightness = 0;         // how bright the LED is
-int fadeAmount = 5;         // how many points to fade the LED by
 int32_t frequency = 100;    //frequency (in Hz)
 uint8_t pwm_value = 25;     // pwm_value  = Motor Stopped   :  Pulse Widh = 1ns
 long duration, distance;
@@ -60,7 +58,10 @@ void setup()
   if(success)     digitalWrite(13, HIGH);    
   else            digitalWrite(13, LOW);
   
-  pwmWrite(motorleft, pwm_value);  // Maximum Speed  // pwmWrite(led, DUTY * 256 / 100);  // 
+  pwmWrite(motorleft, pwm_value);   // pwmWrite(pin, DUTY * 255 / 100);  
+                                    // Can use pwm_values between 30 (min speed) to 58 (max speed) 
+                                    // minimum value to turn on motor is 41, then it can be reduced up to 30
+  
   delay(5000);    // Time to turn motors on with low throtle 
   digitalWrite(13, LOW);
 
@@ -134,7 +135,9 @@ void loop()
                      mySerial.println("\nLiga Motor");
                      Serial.println("\nLiga Motor");                    
                      pwm_value = 45;
-                     pwmWrite(motorleft, pwm_value);  // Maximum Speed  // pwmWrite(led, DUTY * 256 / 100);  // 
+                     pwmWrite(motorleft, pwm_value);  // pwmWrite(pin, DUTY * 255 / 100);  
+                                                     // Can use pwm_values between 30 (min speed) to 58 (max speed) 
+                                                     // minimum value to turn on motor is 41, then it can be reduced up to 30
 
                       
                      delay(10000);              // wait for a second
@@ -142,7 +145,7 @@ void loop()
                      mySerial.println("\nDesliga Motor");                     
                      Serial.println("\nDesliga Motor");
                      pwm_value = 25;
-                     pwmWrite(motorleft, pwm_value);  // Maximum Speed  // pwmWrite(led, DUTY * 256 / 100);  // 
+                     pwmWrite(motorleft, pwm_value);  
                      
                      digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
                  }
