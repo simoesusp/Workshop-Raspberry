@@ -1,0 +1,165 @@
+INSTALLING OPENCV 3.0 ON A RASPBERRY PI
+
+By Robert Castle • February 22, 2014 •
+
+
+This guide assumes you are using Raspbian Linux, you have ssh enabled and are doing everything through the terminal. This install was done on a fresh Raspbian install.
+
+
+-> UPDATE
+
+Make sure Raspbian is up to date:
+	sudo apt-get update
+	sudo apt-get upgrade
+
+
+-> INSTALL DEPENDENCIES
+
+First do this:
+	sudo apt-get -y install build-essential cmake cmake-curses-gui pkg-config libpng12-0 libpng12-dev libpng++-dev libpng3 libpnglite-dev zlib1g-dbg zlib1g zlib1g-dev pngtools libtiff4-dev libtiff4 libtiffxx0c2 libtiff-tools libeigen3-dev
+
+	Note: You can add in cmake-qt-gui if you want a GUI for cmake, and don’t like ccmake.
+
+Then do:
+	sudo apt-get -y install libjpeg8 libjpeg8-dev libjpeg8-dbg libjpeg-progs ffmpeg libavcodec-dev libavcodec53 libavformat53 libavformat-dev libgstreamer0.10-0-dbg libgstreamer0.10-0 libgstreamer0.10-dev libxine1-ffmpeg libxine-dev libxine1-bin libunicap2 libunicap2-dev swig libv4l-0 libv4l-dev python-numpy libpython2.6 python-dev python2.6-dev libgtk2.0-dev 
+
+	Note: You don’t need the lib1394 libraries as there is no FireWire on the Raspberry Pi, but something in this list will grab them anyway (sigh). We install in two stages as there is a possibility of broken package errors if the install order is wrong. It may be fine, but why risk having to fix it.
+
+
+-> INSTALL OPENCV
+
+Download OpenCV from http://opencv.org/downloads.html
+e.g. the latest download link at time of writing
+	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.8/opencv-2.4.8.zip/download opencv-2.4.8.zip
+
+Or get the latest snapshot from the git repo:
+	git clone https://github.com/Itseez/opencv.git
+
+
+-> UNZIP AND PREPARE FOR BUILD
+
+	unzip opencv-2.4.8.zip
+	cd opencv-2.4.8
+	mkdir release
+	cd release
+	ccmake ../
+
+
+-> CONFIGURING
+
+press ‘c’ to configure
+once done toggle the options you want. This were mine:
+
+		ANT_EXECUTABLE                   ANT_EXECUTABLE-NOTFOUND                                                                                                
+		BUILD_DOCS                       ON                                                                                                                     
+		BUILD_EXAMPLES                   ON                                                                                                                     
+		BUILD_JASPER                     ON                                                                                                                     
+		BUILD_JPEG                       ON                                                                                                                     
+		BUILD_OPENEXR                    ON                                                                                                                     
+		BUILD_PACKAGE                    ON                                                                                                                     
+		BUILD_PERF_TESTS                 ON                                                                                                                     
+		BUILD_PNG                        ON                                                                                                                     
+		BUILD_SHARED_LIBS                ON                                                                                                                     
+		BUILD_TBB                        OFF                                                                                                                    
+		BUILD_TESTS                      ON                                                                                                                     
+		BUILD_TIFF                       ON                                                                                                                     
+		BUILD_WITH_DEBUG_INFO            ON                                                                                                                     
+		BUILD_ZLIB                       ON                                                                                                                     
+		BUILD_opencv_apps                ON                                                                                                                     
+		BUILD_opencv_calib3d             ON                                                                                                                     
+		BUILD_opencv_contrib             ON                                                                                                                     
+		BUILD_opencv_core                ON                                                                                                                     
+		BUILD_opencv_features2d          ON                                                                                                                     
+		BUILD_opencv_flann               ON                                                                                                                     
+		BUILD_opencv_gpu                 ON                                                                                                                     
+		BUILD_opencv_highgui             ON                                                                                                                     
+		BUILD_opencv_imgproc             ON                                                                                                                     
+		BUILD_opencv_legacy              ON                                                                                                                     
+		BUILD_opencv_ml                  ON                                                                                                                     
+		BUILD_opencv_nonfree             ON                                                                                                                     
+		BUILD_opencv_objdetect           ON                                                                                                                     
+		BUILD_opencv_ocl                 ON                                                                                                                     
+		BUILD_opencv_photo               ON                                                                                                                     
+		BUILD_opencv_python              ON                                                                                                                     
+		BUILD_opencv_stitching           ON                                                                                                                     
+		BUILD_opencv_superres            ON                                                                                                                     
+		BUILD_opencv_ts                  ON                                                                                                                     
+		BUILD_opencv_video               ON                                                                                                                     
+		BUILD_opencv_videostab           ON                                                                                                                     
+		BUILD_opencv_world               OFF                                                                                                                    
+		CLAMDBLAS_INCLUDE_DIR            CLAMDBLAS_INCLUDE_DIR-NOTFOUND                                                                                         
+		CLAMDBLAS_ROOT_DIR               CLAMDBLAS_ROOT_DIR-NOTFOUND                                                                                            
+		CLAMDFFT_INCLUDE_DIR             CLAMDFFT_INCLUDE_DIR-NOTFOUND                                                                                          
+		CLAMDFFT_ROOT_DIR                CLAMDFFT_ROOT_DIR-NOTFOUND                                                                                             
+		CMAKE_BUILD_TYPE                 Release                                                                                                                  
+		CMAKE_CONFIGURATION_TYPES        Debug;Release                                                                                                                
+		CMAKE_INSTALL_PREFIX             /usr/local
+		 
+		CMAKE_VERBOSE                    OFF                                                                                                                    
+		CUDA_BUILD_CUBIN                 OFF                                                                                                                    
+		CUDA_BUILD_EMULATION             OFF                                                                                                                    
+		CUDA_HOST_COMPILER               /usr/bin/gcc                                                                                                          
+		CUDA_SDK_ROOT_DIR                CUDA_SDK_ROOT_DIR-NOTFOUND                                                                                             
+		CUDA_SEPARABLE_COMPILATION       OFF                                                                                                                    
+		CUDA_TOOLKIT_ROOT_DIR            CUDA_TOOLKIT_ROOT_DIR-NOTFOUND                                                                                         
+		CUDA_VERBOSE_BUILD               OFF                                                                                                                    
+		EIGEN_INCLUDE_PATH               /usr/include/eigen3                                                                                                   
+		ENABLE_NEON                      OFF                                                                                                                    
+		ENABLE_NOISY_WARNINGS            OFF                                                                                                                    
+		ENABLE_OMIT_FRAME_POINTER        ON                                                                                                                     
+		ENABLE_PRECOMPILED_HEADERS       ON                                                                                                                     
+		ENABLE_PROFILING                 OFF                                                                                                                    
+		ENABLE_SOLUTION_FOLDERS          OFF                                                                                                                    
+		ENABLE_VFPV3                     OFF                                                                                                                    
+		EXECUTABLE_OUTPUT_PATH           /home/pi/opencv-2.4.8/release/bin                                                                              
+		GIGEAPI_INCLUDE_PATH             GIGEAPI_INCLUDE_PATH-NOTFOUND                                                                                          
+		GIGEAPI_LIBRARIES                GIGEAPI_LIBRARIES-NOTFOUND                                                                                             
+		INSTALL_CREATE_DISTRIB           OFF                                                                                                                    
+		INSTALL_C_EXAMPLES               OFF                                                                                                                    
+		INSTALL_PYTHON_EXAMPLES          OFF                                                                                                                    
+		INSTALL_TO_MANGLED_PATHS         OFF                                                                                                                    
+		OPENCV_CONFIG_FILE_INCLUDE_DIR   /home/pi/opencv/opencv-2.4.8/release                                                                                  
+		OPENCV_EXTRA_MODULES_PATH                                                                                                                               
+		OPENCV_WARNINGS_ARE_ERRORS       OFF                                                                                                                    
+		OPENEXR_INCLUDE_PATH             OPENEXR_INCLUDE_PATH-NOTFOUND                                                                                          
+		PVAPI_INCLUDE_PATH               PVAPI_INCLUDE_PATH-NOTFOUND                                                                                            
+		PYTHON_NUMPY_INCLUDE_DIR         /usr/lib/pymodules/python2.7/numpy/core/include                                                                       
+		PYTHON_PACKAGES_PATH             lib/python2.7/dist-packages                                                                                           
+		SPHINX_BUILD                     SPHINX_BUILD-NOTFOUND                                                                                                  
+		WITH_1394                        OFF                                                                                                                    
+		WITH_CUBLAS                      OFF                                                                                                                    
+		WITH_CUDA                        OFF                                                                                                                    
+		WITH_CUFFT                       OFF                                                                                                                    
+		WITH_EIGEN                       ON                                                                                                                     
+		WITH_FFMPEG                      ON                                                                                                                     
+		WITH_GIGEAPI                     OFF                                                                                                                    
+		WITH_GSTREAMER                   ON                                                                                                                     
+		WITH_GTK                         ON                                                                                                                     
+		WITH_JASPER                      ON                                                                                                                     
+		WITH_JPEG                        ON                                                                                                                     
+		WITH_LIBV4L                      ON                                                                                                                     
+		WITH_NVCUVID                     OFF  
+		 
+		WITH_OPENCL                      ON                                                                                                                     
+		WITH_OPENCLAMDBLAS               ON                                                                                                                     
+		WITH_OPENCLAMDFFT                ON                                                                                                                     
+		WITH_OPENEXR                     ON                                                                                                                     
+		WITH_OPENGL                      ON                                                                                                                     
+		WITH_OPENMP                      OFF                                                                                                                    
+		WITH_OPENNI                      OFF                                                                                                                    
+		WITH_PNG                         ON                                                                                                                     
+		WITH_PVAPI                       ON                                                                                                                     
+		WITH_QT                          OFF                                                                                                                    
+		WITH_TBB                         OFF                                                                                                                    
+		WITH_TIFF                        ON                                                                                                                     
+		WITH_UNICAP                      OFF                                                                                                                    
+		WITH_V4L                         ON                                                                                                                     
+		WITH_XIMEA                       OFF                                                                                                                    
+		WITH_XINE                        OFF                 
+
+	press ‘c’ again to configure with your new settings
+	press ‘g’ to generate the Makefile
+
+And finally, build. This will take a long time (about 10 hours!).
+	make
+	sudo make install
