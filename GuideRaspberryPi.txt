@@ -220,7 +220,7 @@ In the laptop, running linux:
 
 	Enter the command in terminal:
 	ifconfig eth0 192.168.0.1 netmask 255.255.255.0
-		Obs1.: 192.168.0.1   will be the Raspberry IP Address in the network
+		Obs1.: 192.168.0.1   will be the laptop IP Address in the network
 		Obs2.: the laptop IP Address must have the same 3 fist numbers: eg. 192.168.0._
 	
 	Enter the command in terminal:
