@@ -1,8 +1,8 @@
-X----------------------X----------------------X
-	INSTALLING OPENCV 3.0 ON A RASPBERRY PI
+X-----------------------X-----------------------X
+	INSTALLING OPENCV 2.4.9 ON A RASPBERRY PI
 
 				RODRIGO'S GUIDE
-X----------------------X----------------------X
+X-----------------------X-----------------------X
 
 This guide assumes you are using Raspbian Linux, you have ssh enabled and are doing everything through the terminal. This install was done on a fresh Raspbian install.
 
@@ -29,16 +29,16 @@ Then do:
 
 -> INSTALL OPENCV
 
-To download OpenCV 3.0.0, enter the following command:
-	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.0.0/opencv-3.0.0.zip/download
+To download OpenCV 2.4.9, enter the following command:
+	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.9/opencv-2.4.9.zip/download
 
 	Note: If you want to install a older version, copy this link http://sourceforge.net/projects/opencvlibrary/files/opencv-unix in your browser and choose the version you want.
 
 
 -> UNZIP AND PREPARE FOR BUILD
 
-	unzip opencv-3.0.0.zip
-	cd opencv-3.0.0
+	unzip opencv-2.4.9.zip
+	cd opencv-2.4.9
 	mkdir release
 	cd release
 	ccmake ../
