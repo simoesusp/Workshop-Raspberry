@@ -28,9 +28,10 @@ Then do:
 
 -> INSTALL OPENCV
 
-Download OpenCV from http://opencv.org/downloads.html
-e.g. the latest download link at time of writing
-	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.8/opencv-2.4.8.zip/download opencv-2.4.8.zip
+To download OpenCV 3.0.0, enter the following command:
+	wget http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/3.0.0/opencv-3.0.0.zip/download
+
+	Note: If you want to install a older version, copy this link http://sourceforge.net/projects/opencvlibrary/files/opencv-unix in your browser and choose the version you want.
 
 Or get the latest snapshot from the git repo:
 	git clone https://github.com/Itseez/opencv.git
