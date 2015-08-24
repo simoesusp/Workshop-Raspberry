@@ -17,6 +17,8 @@ gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard -Wall test.c -o test
 
 5-	FernandosProject PDF also present a very interesting design of a remote controlled robot using 2 Raspberrys and Arduinos to pilot a camera using robot via FPV.
 
+6-  Checkout how to connect RaspberryPi and Arduino on Figure ConectingRasptoArduino.jpg. It is just one of the 1000 ways to connect them... but one that works!
+
 
 Have fun!!
 Eduardo Simoes
