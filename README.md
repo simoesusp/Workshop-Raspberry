@@ -1,5 +1,7 @@
 # Workshop-Raspberry
 
+Next meeting TODAY (16/09/2015): 13:30h no Lab 6306
+
 Repository of examples and tutorials for projects combining RaspberryPi + Arduino.
 
 Created and maintained by a group of students of the University of São Paulo.
