@@ -325,7 +325,8 @@ gateway – This is the 'Gateway' address we found earlier.
 
 	sudo reboot
 
-- One last thing that needs to be modified is the /etc/resolv.conf file. (ISSO NAO FUNCIONA!!! a Raspberry apaga esse arquivo toda vez que reboota!!!!!!!!!!!!! Eu adicionei uma linha com nameservers direto no arquivo interfaces e funcionou!!!) This file contains information of DNS name resolvers that allow your raspberry pi to resolve names to IP addresses.  For example, if you ping www.suntimebox.com the raspberry pi will have to determine the IP address of www.suntimebox.com.
+- One last thing that needs to be modified is the /etc/resolv.conf file. (Problem: This does not work for me!!Raspberry erases this file every time it reboots!!!!!!!! I included one line with nameservers in the "interfaces" file and it finally worked!!!!!!!!!!!
+-- This file contains information of DNS name resolvers that allow your raspberry pi to resolve names to IP addresses.  For example, if you ping www.suntimebox.com the raspberry pi will have to determine the IP address of www.suntimebox.com.
 - Enter the following command to edit the resolv.conf file.
 
 	sudo nano /etc/resolv.conf
@@ -333,8 +334,8 @@ gateway – This is the 'Gateway' address we found earlier.
 		nameserver 8.8.8.8
 		name server 8.8.4.4
 
---> O problema e' que não sei porque mas a rasp esta apagando esse arquivo toda vez que reboota!!
--- Então, o jeito e' adicionar a linha abaixo no arquivo etc/network/interfaces:
+--> The problem is that Rasp will erase this file everityme it reboots!!! Do not know why!!!
+-- So, the trick is to add the line bellow to the file: etc/network/interfaces:
 	dns-nameservers 143.107.231.12 8.8.8.8
 
 
@@ -443,7 +444,7 @@ Code Exemple:
 	int main (void)
 	{
 	  wiringPiSetup () ;
-	  pinMode (0, OUTPUT) ;
+	  pinMode (0, OUTPUT) ;		// Pin 0 here (wiringPi Library) is pin 17 in the OnBoard Connector!!!
 	  for (;;)
 	  {
 		digitalWrite (0, HIGH) ; delay (500) ;
