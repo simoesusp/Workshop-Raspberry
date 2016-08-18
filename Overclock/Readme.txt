@@ -1,6 +1,7 @@
 Overclock Tips
 
 - It is possible to overclock the RaspberryPi by editing the config.txt file that Rasp uses during boot.
+- The file config.txt is in the /boot  folder
 - To test it, we used an OpenCV program to detect faces, included in the software folder.
 - We tested a RaspberryPi2 with a heat sink and an improvised 12v fan from an old 486 computer.
 - To overclock the RaspberryPi2, just include these lines:

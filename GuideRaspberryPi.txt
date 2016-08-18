@@ -1,4 +1,4 @@
-A guide to getting started with the Raspberry Pi. 
+﻿A guide to getting started with the Raspberry Pi. 
 	- Extracted from: https://www.raspberrypi.org/forums/viewtopic.php?t=4751
 	- Modified by Simoes
 
@@ -72,6 +72,10 @@ http://www.raspberrypi.org/downloads
 
 - After that (but only the first time you boot) you will be presented with the "raspi-config" configuration menu.
 - You should use this to expand the space on your SD-card to the full size of the card (if you used NOOBS to install the system, it automatic expanded the SD card), and to set the keyboard configuration. You can also use this menu for other basic configuration options such as changing your password.
+
+- If you want to talk to an Arduino or other Raspberrys via hardware serial, don't forget to enable it at: Advanced Options / A8 Serial
+- You can also enable to boot direct to the Desktop environment (grafic interface) at: Enable boot to Desktop/Scratch
+
 - The menu won't be shown on later boots, but can be recalled at any time by using the following code:
 	sudo raspi-config
 
@@ -108,10 +112,10 @@ or
 
 
 x---------------x--------------------x
-		BILEKI'S GUIDE     ---   Need translation... Anyone wanting to help...
+		BILEKI'S GUIDE     ---   
 x---------------X--------------------X
 
-1) How to prepare the SD Card on Linux - Without use NOOBS
+1) How to prepare the SD Card on Linux - Without using NOOBS
 
 - Step 1: Insert the SD Card in the laptop card reader.
 
