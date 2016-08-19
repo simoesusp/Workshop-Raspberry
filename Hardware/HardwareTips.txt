@@ -1,1 +1,13 @@
-The Suggested way to connect your RaspberryPi to other hardware devices such as sensors, Leds and buttons is always thoughout the use of an Arduino.
+The Suggested way to connect your RaspberryPi to other hardware devices such as sensors, Leds and buttons is always throughout the use of an Arduino.
+It is always better to use a U$ 3,00 Arduino to control motors and noisy signals that harm your Raspberry Arm easily.
+That concept consists of a low-level hardware controller such as an Arduino connected to the Raspberry board via a Serial port. Just enable the Raspberry Serial port with the raspi-config interface and include a Library such as the WiringPi.h that has serial port configuration functions.
+Mind that the Arduino works with 5v and the Raspberry with 3.3v, so you will need a voltage adapting circuit, such as the one presented at figure: ConectingRasptoArduino.JPG
+
+Raspberry   Tx --> buffer --> Arduino Rx
+Arduino Tx --> 5v to 3.3v Resistor converter --> Raspbery Rx
+
+It is always possible to connect the Raspberry to the Arduino via a Bluetooth link (se software examples at https://github.com/simoesusp/HomeControl):
+Raspberry  <--> Bluetooth Module (IR-10)    <-->    Bluetooth Module (IR-10) <--> Arduino Rx
+
+To supply the Raspberry board using a Battery it is recommended to use a 5V UBEC regulator that can supply at least 2A. It can also be done with the old faithful LM7805 with a generous heat sink.
+
