@@ -24,13 +24,6 @@
 
 #include <SoftwareSerial.h>
 
-#include <PWM.h>
-
-int brightness = 0;         // how bright the LED is
-int fadeAmount = 5;         // how many points to fade the LED by
-int32_t frequency = 100;    //frequency (in Hz)
-uint8_t pwm_value = 25;     // pwm_value  = Motor Stopped   :  Pulse Widh = 1ns
-long duration, distance;
 int a, i, j = 0;
 int v[500];  // maximun message size
 
@@ -41,26 +34,13 @@ void setup()
 {
   pinMode(13, OUTPUT);
 
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
- 
-  pinMode(motorleft, OUTPUT);
 
   // Open hardware serial communications and wait for port to open:
   Serial.begin(9600);
   
   // set the data rate for the SoftwareSerial port
   mySerial.begin(9600);
-
-  //initialize all timers except for 0, to save time keeping functions
-  InitTimersSafe(); 
-  //sets the frequency for the specified pin
-  bool success = SetPinFrequencySafe(motorleft, frequency);
-  //if the pin frequency was set successfully, pin 13 turn on
-  if(success)     digitalWrite(13, HIGH);    
-  else            digitalWrite(13, LOW);
-  
-  pwmWrite(motorleft, pwm_value);  // Maximum Speed  // pwmWrite(led, DUTY * 256 / 100);  // 
+  digitalWrite(13, HIGH);
   delay(1000);    // Time to turn motors on with low throtle 
   digitalWrite(13, LOW);
 
