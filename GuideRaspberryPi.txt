@@ -80,7 +80,7 @@ http://www.raspberrypi.org/downloads
 	sudo raspi-config
 
 - To get into the familiar graphical user interface (GUI), after you have logged in, type 
-	startx
+	startx (CTRL+ALT+F3 go back)
 
 - At the end of your session, when you wish to stop and turn off the Pi, enter following text:
 	sudo halt
@@ -112,7 +112,7 @@ or
 
 
 x---------------x--------------------x
-		BILEKI'S GUIDE     ---   
+		BILEKI'S GUIDE on How to prepare the SD Card on Linux    ---   
 x---------------X--------------------X
 
 1) How to prepare the SD Card on Linux - Without using NOOBS
@@ -361,7 +361,7 @@ Edit with: sudo nano /etc/network/interfaces
 	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 
-	-->> restart the network stuff without need reboot!!!!:
+	-->> restart the network stuff without need reboot (That did not work for me!!!!!)!:
 		sudo /etc/init.d/networking restart
 
 		
@@ -411,7 +411,9 @@ X------------------X-------------------X
 - Se botar -v  na linha de comando pra compilar, ele da um monte de mensagems dizendo tudo que ta fazendo!!
 	- Assim pode-se conferir se pegou os parâmetros do Arm7
 	
-- Ctr-Alt-Backspace   -->  Terminate X server
+- Ctr-Alt-Backspace   -->  Logout 
+- Ctr-Alt-F3   -->  Terminate X server and move to terminal
+- startx       -->  Strart the Graphical User Interface (GUI) 
 
 2) Firefox   --> O Firefox tem outra distribuição para a Raspberry, chama Iceweasel
 	sudu apt-get install iceweasel

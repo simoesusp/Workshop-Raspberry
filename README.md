@@ -1,10 +1,13 @@
 # Workshop-Raspberry
 
-Next meeting TODAY (16/09/2015): 13:30h no Lab 6306
+################ Facebook Group ################
+https://www.facebook.com/groups/raspbcc/?fref=ts
+################################################
+Next meeting TODAY (19/08/2016): 08:00h at Lab 6306
 
 Repository of examples and tutorials for projects combining RaspberryPi + Arduino.
 
-Created and maintained by a group of students of the University of São Paulo.
+Created and maintained by a group of students of the University of SÃ£o Paulo.
 
 With RaspberryPi 2, do not forget to configure GCC to compile optimizing to its ARM7: 
 gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard -Wall test.c -o test
@@ -19,7 +22,7 @@ gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard -Wall test.c -o test
 
 5-	FernandosProject PDF also present a very interesting design of a remote controlled robot using 2 Raspberrys and Arduinos to pilot a camera using robot via FPV.
 
-6-  Checkout how to connect RaspberryPi and Arduino on Figure ConectingRasptoArduino.jpg. It is just one of the 1000 ways to connect them... but one that works!
+6-  Checkout how to connect RaspberryPi and Arduino on Figure ConectingRasptoArduino.jpg. It is just one of the 1000 ways to connect them... but one that works! Do not forget to enable the Raspberry Serial Port with raspi-config --> Advanced Options --> Enable Serial Port.
 
 
 Have fun!!
