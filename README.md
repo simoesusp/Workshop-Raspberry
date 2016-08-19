@@ -1,10 +1,13 @@
 # Workshop-Raspberry
 
+################ Facebook Group ################
+https://www.facebook.com/groups/raspbcc/?fref=ts
+################################################
 Next meeting TODAY (16/09/2015): 13:30h no Lab 6306
 
 Repository of examples and tutorials for projects combining RaspberryPi + Arduino.
 
-Created and maintained by a group of students of the University of São Paulo.
+Created and maintained by a group of students of the University of SÃ£o Paulo.
 
 With RaspberryPi 2, do not forget to configure GCC to compile optimizing to its ARM7: 
 gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard -Wall test.c -o test
