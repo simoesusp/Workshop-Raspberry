@@ -80,7 +80,7 @@ http://www.raspberrypi.org/downloads
 	sudo raspi-config
 
 - To get into the familiar graphical user interface (GUI), after you have logged in, type 
-	startx
+	startx (CTRL+ALT+F3 go back)
 
 - At the end of your session, when you wish to stop and turn off the Pi, enter following text:
 	sudo halt
