@@ -1,0 +1,12 @@
+This project consists of a Power Supply for the RaspberryPi Board using a 12V Battery and a charger from mains.
+
+A notebook power supply is used to convert 110V/220V to 19V (see figure PowerSupplySchematic.jpg). This can be directly regulated to 5V by a 2Amp UBEC to power the Raspberry Board.
+
+It is also used to charge a 12V battery via a LM317 circuit, also presented in figure 12VbatteryCharger_LM317_circuit.jpg.
+
+If the circuit is turned off from mains, the Raspberry is fed from the Battery.
+
+Used only simple to acquire components. 
+
+Enjoy!
+Simoes
