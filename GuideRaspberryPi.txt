@@ -2,6 +2,19 @@
 	- Extracted from: https://www.raspberrypi.org/forums/viewtopic.php?t=4751
 	- Modified by Simoes
 
+Summary:
+sudo raspi-config
+- Ctr-Alt-Backspace --> Logout
+- Ctr-Alt-F3 --> Terminate X server and move to terminal
+- startx --> Strart the Graphical User Interface (GUI)
+sudo halt
+sudo reboot
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+
 1) Getting started and general questions
 
 - This start guide uses the NOOBS installation system: the latest version of this comes with the Raspbian OS as standard, but other OSes can be installed when you connect the PI to the internet via the ethernet port. 
@@ -392,17 +405,15 @@ X------------------X-------------------X
 		
 	--Change /usr/bin/gcc to your actual compiler if that's not right on your system.
 
-	b)Save it as ~/bin/gcc.
+	b)Save it as /home/pi/bin/gcc.
 
 	c)Make the new script executable:
-
-		chmod +x ~/bin/gcc
+		chmod +x /home/pi/bin/gcc
 
 	d)Repeat to create another file for g++.
 
-	e)Add ~/bin to the start of your path:
-
-		export PATH=~/bin:$PATH
+	e)Add /home/pi/bin to the start of your path:
+		export PATH=/home/pi/bin:$PATH
 	
 	e)Compile your project. Whenever your new scripts are on the path they will override whatever the makefile says.
 
