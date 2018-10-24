@@ -17,28 +17,30 @@ sudo apt-get upgrade
 
 1) Getting started and general questions
 
-- This start guide uses the NOOBS installation system: the latest version of this comes with the Raspbian OS as standard, but other OSes can be installed when you connect the PI to the internet via the ethernet port. 
+- This start guide uses the NOOBS installation system: the latest version of this comes with the Raspbian OS as standard, but other OSes can be installed when you connect the PI to the internet via the ethernet port (this is very easy to do at home with NET modems, but very dificult to do at USP). Forget the others and go for Raspbian!! 
 
-- Protect the bottom of your RaspberryPi board with a tape or plastic material so that it doeas not touch any metal stuff on left on top off the table.
+- Protect the bottom of your RaspberryPi board with a tape or plastic material so that it does not touch any metal stuff (keys, pens, peaces of wire...) left on top off the table.
 
 - Connect an HDMI cable from the board to your TV or HDMI Monitor for video and audio output, or to a DVI-D monitor for video only. 
 - Warning: If you do not do it before turning power on, Raspberry will not provide HDMI signals after boot. This is very painful, because you wont be able to turn off the board properly without seeing what you are doing.
 
-- If you don't have a TV or monitor with an HDMI or DVI-D port, there are alternative ways to get audiovisual output. On the models A and B, you can use the yellow RCA jack located in the center of the top edge for video output. For audio output, you can use the 3.5 mm stereo headphone jack to the right of the RCA jack. The models A+ and B+ have a single connector for both audio and video: it is marked "A/V", and is located at the bottom of the board, to the right the HDMI port. You will need an A/V adapter cable.
+		- If you don't have a TV or monitor with an HDMI or DVI-D port, there are alternative ways to get audiovisual output. On the models A and B, you can use the yellow RCA jack located in the center of the top edge for video output. For audio output, you can use the 3.5 mm stereo headphone jack to the right of the RCA jack. The models A+ and B+ have a single connector for both audio and video: it is marked "A/V", and is located at the bottom of the board, to the right the HDMI port. You will need an A/V adapter cable.
 
 - Plug a USB keyboard and mouse into the USB slots located on the right edge.
 - You can also plug a WiFi adapter into the USB slot for wireless internet access. 
 
 
 - You will need to prepare a SD card with a proper booting image... by a class 10 card to avoid file system corruption problems. But any SD card will work anyway!
+- Warning: Raspberry is NOT Arduino, it has an Operational System running that has to shut down before turning it off.
 
-- Plug in a regulated power supply that is rated at 5V ±5% and at least 700mA (or 0.7A). 
-- Anything bigger than 700 mA (like 1000mA) will also work. 
-- Avoid using the smaller chargers used for small GSM phones, as these are often unregulated and unreliable. 
-- The model B+ and the Pi 2 should use adapters of at least 2.5A, but they will probably work with a 700mA adapter, or maybe even less (depending of how much current the USB and HDMI ports use). 
-- Please note, though, that using several USB devices or working on intensive tasks will draw much more current. If the PWR LED goes off, you are providing insufficient power.
+- Plug in a regulated power supply that is rated at 5V ±5% and at least 700mA (or 0.7A). I would pick atleast a 2A supply to enshure enough current.
 - On the RaspberryPi2, the board firmware will flash a colorful (rainbow like) square on the top right corner if it needs more power than your power supply can provide.
-- If you are having problems with power to your Pi, you should not only check the supply itself, but also the cable from the power supply unit to the Pi: frequently, cables can lower the current/voltage going from the power supply unit to the Pi to below the level required for stability. 
+
+		- Anything bigger than 700 mA (like 1000mA) will also work. 
+		- Avoid using the smaller chargers used for small GSM phones, as these are often unregulated and unreliable. 
+		- The model B+ and the Pi 2 should use adapters of at least 2.5A, but they will probably work with a 700mA adapter, or maybe even less (depending of how much current the USB and HDMI ports use). 
+		- Please note, though, that using several USB devices or working on intensive tasks will draw much more current. If the PWR LED goes off, you are providing insufficient power.
+		- If you are having problems with power to your Pi, you should not only check the supply itself, but also the cable from the power supply unit to the Pi: frequently, cables can lower the current/voltage going from the power supply unit to the Pi to below the level required for stability. 
 
 
 2) Installing NOOBS
@@ -102,14 +104,14 @@ or
 
 - This will shut the Pi down safely, after which you can turn it off by turning off the power supply. Please do not turn the power supply off without first shutting the Pi down: to do so might damage the SD card's file system. 
 
-- How to get composite video working with NOOBS: It is important to note that, when you are using NOOBS, and are using a A/V (or composite RCA) video for a regular TV (or mini display with a composite input), you will not immediately get any picture: you need to press 3 (for PAL), or 4 (for NTSC) repeatedly to switch over from HDMI to composite. You should wait a couple of seconds or so before starting to press 3 or 4, as NOOBS need to boot before it can start listening to the keyboard. If you want to know if NOOBS is receiving input from the keyboard, press Caps Lock: if you can toggle the CAPs LED on and off, NOOBS has booted and is reading the keyboard.
-- If the picture is monochrome, you are using the wrong TV standard: try changing from PAL to NTSC, or vice versa.
+		- How to get composite video working with NOOBS: It is important to note that, when you are using NOOBS, and are using a A/V (or composite RCA) video for a regular TV (or mini display with a composite input), you will not immediately get any picture: you need to press 3 (for PAL), or 4 (for NTSC) repeatedly to switch over from HDMI to composite. You should wait a couple of seconds or so before starting to press 3 or 4, as NOOBS need to boot before it can start listening to the keyboard. If you want to know if NOOBS is receiving input from the keyboard, press Caps Lock: if you can toggle the CAPs LED on and off, NOOBS has booted and is reading the keyboard.
+		- If the picture is monochrome, you are using the wrong TV standard: try changing from PAL to NTSC, or vice versa.
 
-- If you are using a HDMI connection, NOOBS should give you a picture automatically, but if it does not, or the picture seems wrong, you can try switching between "safe" and "optimal" HDMI video settings by pressing 1 or 2.
+		- If you are using a HDMI connection, NOOBS should give you a picture automatically, but if it does not, or the picture seems wrong, you can try switching between "safe" and "optimal" HDMI video settings by pressing 1 or 2.
 
-- After installing (for example) Raspbian, the next reboot will start it rather than NOOBS: Raspbian has a slightly different way with coping with composite video. It will look to see if an HDMI device is connected; if it doesn't see one, it will automatically switch to (NTSC) composite (unless you have saved an overriding video setting into config.txt).
+		- After installing (for example) Raspbian, the next reboot will start it rather than NOOBS: Raspbian has a slightly different way with coping with composite video. It will look to see if an HDMI device is connected; if it doesn't see one, it will automatically switch to (NTSC) composite (unless you have saved an overriding video setting into config.txt).
 
-- If you are using an older PAL TV, you may only get a monochrome picture: you might want to change the entry in config.txt that says "sdtv_mode=0" to "sdtv_mode=2" for PAL. You can also do this from NOOBS: restart while holding down shift and the Pi will boot into NOOBS. Press 3 again for a composite picture and choose the option to edit config.txt, then edit, save, and reboot.
+		- If you are using an older PAL TV, you may only get a monochrome picture: you might want to change the entry in config.txt that says "sdtv_mode=0" to "sdtv_mode=2" for PAL. You can also do this from NOOBS: restart while holding down shift and the Pi will boot into NOOBS. Press 3 again for a composite picture and choose the option to edit config.txt, then edit, save, and reboot.
 
 4) Updating and upgrading Raspbian
 
@@ -163,8 +165,8 @@ x---------------X--------------------X
 	- Step 12: To configure PC for access by SSH, see apendix B.
 
 
-APPENDIX A: Network configuration for static IP (eg. Simoes room)
-	-- Must be done always. The reboot erase all!!!
+APPENDIX A: Network configuration for static IP (eg. Simoes office)
+	-- Must be done always. The reboot erases all!!!
 	-- See Appendix C to make it stay configured
 	-- Everything between '<' and '>', must be replaced by connection values
 	
@@ -232,11 +234,18 @@ In RaspberryPi:
 
 
 In the laptop, running linux:
-	Enter the command in terminal:
-		sysctl -w net.ipv4.ip_forward=1
+--> Do not forget to plug a network cable between the laptop and the Rasp board!
 
 	Enter the command in terminal:
-	ifconfig eth0 192.168.0.1 netmask 255.255.255.0
+		sudo sysctl -w net.ipv4.ip_forward=1
+
+	Be Carefull! Some PCs do not have eth0.
+	To check yours, use: ifconfig  --> Mine is enp6s0
+
+		IN THAT CASE, USE enp6s0 INTERFACE INSTEAD OF eth0 ON THE NEXT COMMAND!!!
+
+	Enter the command in terminal:
+	sudo ifconfig eth0 192.168.0.1 netmask 255.255.255.0
 		Obs1.: 192.168.0.1   will be the laptop IP Address in the network
 		Obs2.: the laptop IP Address must have the same 3 fist numbers: eg. 192.168.0._
 	
@@ -245,7 +254,7 @@ In the laptop, running linux:
 	
 
 To establish connection to RaspberryPi just plug a network cable between the laptop and the Rasp board and enter the command:
-	ssh pi@192.168.0.10	--> this is the IP Address that you have saved in the Raspberry interfaces file.
+	ssh pi@192.168.0.10 -p 22000	--> this is the IP Address that you have saved in the Raspberry interfaces file.
 
 
 APPENDIX C - Static IP permanently after reboots
@@ -394,6 +403,9 @@ X------------------X-------------------X
 X------------------X-------------------X
 
 1) Configure GCC to compile optimizing to ARM7 of RaspberryPi 2
+	--> to check what arm version you have, run this: uname -a
+
+
 	GCC : gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard hello.c -o hello.exe
 	
 	Create a file that overwrite GCC and you don't have to enter this command line every time you want do this:
@@ -473,3 +485,23 @@ Code Exemple:
 		
 		
 
+4) How to configure Serial Interface to Arduino
+
+	IMPORTANT: Raspberry has an embedded terminal interface via SERIAL PORT (Pins 8-tx and 10-rx)
+	It works at speed 115200 and can be very usefull to control all Rasp features from an Arduino.
+	But we MUST DISABLE THAT before connecting to Arduino with our own software!!
+
+	To DISABLE Raspberry Embeded Terminal, first edit file:
+	sudo nano /etc/inittab
+	--> comment line: T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+
+	Then edit file:
+	sudo nano /boot/cmdline.txt
+	--> remove the  folloing parts: console=ttyAMA0,115200
+	--> if it contains: kgdboc=ttyAMA0,115200    remove it too!!
+
+	Do no forget to REBOOT !!
+
+	Now it will be possible to communicate with Arduino usin Wiringpi library in C
+
+	
