@@ -504,4 +504,13 @@ Code Exemple:
 
 	Now it will be possible to communicate with Arduino usin Wiringpi library in C
 
-	
+----------
+	WARNING!!!!
+	THIS CHANGED IN RASPBERRY3 !!1
+	NOW, You have to configure serial via Preferences - Rasp-Configuration
+	Enter in Interfaces  -> Enable Serial, when asked, disable Console (vt100 terminal or getty)
+
+	Then change the software.c   from:
+	fd = serialOpen ("/dev/ttyAMA0", 115200)   to:
+	fd = serialOpen ("/dev/serial0", 115200)   to:
+	  
