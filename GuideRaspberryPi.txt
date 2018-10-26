@@ -1,4 +1,4 @@
-﻿A guide to getting started with the Raspberry Pi. 
+﻿A guide to getting started with the Raspberry Pi.
 	- Extracted from: https://www.raspberrypi.org/forums/viewtopic.php?t=4751
 	- Modified by Simoes
 
@@ -17,17 +17,17 @@ sudo apt-get upgrade
 
 1) Getting started and general questions
 
-- This start guide uses the NOOBS installation system: the latest version of this comes with the Raspbian OS as standard, but other OSes can be installed when you connect the PI to the internet via the ethernet port (this is very easy to do at home with NET modems, but very dificult to do at USP). Forget the others and go for Raspbian!! 
+- This start guide uses the NOOBS installation system: the latest version of this comes with the Raspbian OS as standard, but other OSes can be installed when you connect the PI to the internet via the ethernet port (this is very easy to do at home with NET modems, but very dificult to do at USP). Forget the others and go for Raspbian!!
 
 - Protect the bottom of your RaspberryPi board with a tape or plastic material so that it does not touch any metal stuff (keys, pens, peaces of wire...) left on top off the table.
 
-- Connect an HDMI cable from the board to your TV or HDMI Monitor for video and audio output, or to a DVI-D monitor for video only. 
+- Connect an HDMI cable from the board to your TV or HDMI Monitor for video and audio output, or to a DVI-D monitor for video only.
 - Warning: If you do not do it before turning power on, Raspberry will not provide HDMI signals after boot. This is very painful, because you wont be able to turn off the board properly without seeing what you are doing.
 
 		- If you don't have a TV or monitor with an HDMI or DVI-D port, there are alternative ways to get audiovisual output. On the models A and B, you can use the yellow RCA jack located in the center of the top edge for video output. For audio output, you can use the 3.5 mm stereo headphone jack to the right of the RCA jack. The models A+ and B+ have a single connector for both audio and video: it is marked "A/V", and is located at the bottom of the board, to the right the HDMI port. You will need an A/V adapter cable.
 
 - Plug a USB keyboard and mouse into the USB slots located on the right edge.
-- You can also plug a WiFi adapter into the USB slot for wireless internet access. 
+- You can also plug a WiFi adapter into the USB slot for wireless internet access.
 
 
 - You will need to prepare a SD card with a proper booting image... by a class 10 card to avoid file system corruption problems. But any SD card will work anyway!
@@ -36,11 +36,11 @@ sudo apt-get upgrade
 - Plug in a regulated power supply that is rated at 5V ±5% and at least 700mA (or 0.7A). I would pick atleast a 2A supply to enshure enough current.
 - On the RaspberryPi2, the board firmware will flash a colorful (rainbow like) square on the top right corner if it needs more power than your power supply can provide.
 
-		- Anything bigger than 700 mA (like 1000mA) will also work. 
-		- Avoid using the smaller chargers used for small GSM phones, as these are often unregulated and unreliable. 
-		- The model B+ and the Pi 2 should use adapters of at least 2.5A, but they will probably work with a 700mA adapter, or maybe even less (depending of how much current the USB and HDMI ports use). 
+		- Anything bigger than 700 mA (like 1000mA) will also work.
+		- Avoid using the smaller chargers used for small GSM phones, as these are often unregulated and unreliable.
+		- The model B+ and the Pi 2 should use adapters of at least 2.5A, but they will probably work with a 700mA adapter, or maybe even less (depending of how much current the USB and HDMI ports use).
 		- Please note, though, that using several USB devices or working on intensive tasks will draw much more current. If the PWR LED goes off, you are providing insufficient power.
-		- If you are having problems with power to your Pi, you should not only check the supply itself, but also the cable from the power supply unit to the Pi: frequently, cables can lower the current/voltage going from the power supply unit to the Pi to below the level required for stability. 
+		- If you are having problems with power to your Pi, you should not only check the supply itself, but also the cable from the power supply unit to the Pi: frequently, cables can lower the current/voltage going from the power supply unit to the Pi to below the level required for stability.
 
 
 2) Installing NOOBS
@@ -49,7 +49,7 @@ sudo apt-get upgrade
 
 - If your SD card is not a new one, before installing NOOBS on your SD card, you must first erase the card completely, and remove all partitions, using the SD Card Association’s formatting tool: https://www.sdcard.org/downloads/formatter_4/index.html. DO NOT use its quick format option, especially if the card has been used before, or the install might fail. NOOBS will partition and format the card as necessary, but it needs to begin with a completely empty card. Please also ensure that you enable the resize option.
 
-- You can find information on how to use the NOOBS installer here: 
+- You can find information on how to use the NOOBS installer here:
 https://github.com/raspberrypi/noobs/bl ... x-software
 
 - When you have copied the NOOBS files onto the card, it should contain these files:
@@ -75,13 +75,13 @@ http://www.raspberrypi.org/downloads
 
 3) Using your Raspberry Pi
 
-- Once you have finished setting up your Raspberry Pi, it's time to try powering it on and using it. 
+- Once you have finished setting up your Raspberry Pi, it's time to try powering it on and using it.
 
 - When the Pi begins to receive power, the red LED marked PWR will light.
-- The green LED marked OK (or ACK in later version) will blink in an irregular pattern to show whenever the Pi reads from the SD card. 
+- The green LED marked OK (or ACK in later version) will blink in an irregular pattern to show whenever the Pi reads from the SD card.
 
 - If all goes well and the OS boots successfully, the Pi will show a rainbow screen: this is actually four pixels expanded and blended to full screen size by the GPU. Shortly afterwards, the ARM processor starts, and the installed OS begins to load.
-- Raspbian starts by showing a long scrolling text that tells you exactly what the Pi is doing to get ready to work. 
+- Raspbian starts by showing a long scrolling text that tells you exactly what the Pi is doing to get ready to work.
 
 - Once the Pi finishes loading the OS, you'll need to put in your user name and password: the default username is "pi", and the default password is "raspberry".
 
@@ -94,7 +94,7 @@ http://www.raspberrypi.org/downloads
 - The menu won't be shown on later boots, but can be recalled at any time by using the following code:
 	sudo raspi-config
 
-- To get into the familiar graphical user interface (GUI), after you have logged in, type 
+- To get into the familiar graphical user interface (GUI), after you have logged in, type
 	startx (CTRL+ALT+F3 go back)
 
 - At the end of your session, when you wish to stop and turn off the Pi, enter following text:
@@ -102,7 +102,7 @@ http://www.raspberrypi.org/downloads
 or
 	sudo shutdown -h now
 
-- This will shut the Pi down safely, after which you can turn it off by turning off the power supply. Please do not turn the power supply off without first shutting the Pi down: to do so might damage the SD card's file system. 
+- This will shut the Pi down safely, after which you can turn it off by turning off the power supply. Please do not turn the power supply off without first shutting the Pi down: to do so might damage the SD card's file system.
 
 		- How to get composite video working with NOOBS: It is important to note that, when you are using NOOBS, and are using a A/V (or composite RCA) video for a regular TV (or mini display with a composite input), you will not immediately get any picture: you need to press 3 (for PAL), or 4 (for NTSC) repeatedly to switch over from HDMI to composite. You should wait a couple of seconds or so before starting to press 3 or 4, as NOOBS need to boot before it can start listening to the keyboard. If you want to know if NOOBS is receiving input from the keyboard, press Caps Lock: if you can toggle the CAPs LED on and off, NOOBS has booted and is reading the keyboard.
 		- If the picture is monochrome, you are using the wrong TV standard: try changing from PAL to NTSC, or vice versa.
@@ -115,7 +115,7 @@ or
 
 4) Updating and upgrading Raspbian
 
-- Ensure you are connected to the internet, and enter the following code: 
+- Ensure you are connected to the internet, and enter the following code:
 	sudo apt-get update
 	sudo apt-get upgrade
 
@@ -127,7 +127,7 @@ or
 
 
 x---------------x--------------------x
-		BILEKI'S GUIDE on How to prepare the SD Card on Linux    ---   
+		BILEKI'S GUIDE on How to prepare the SD Card on Linux    ---
 x---------------X--------------------X
 
 1) How to prepare the SD Card on Linux - Without using NOOBS
@@ -138,19 +138,19 @@ x---------------X--------------------X
 	df -h
 		This command will list all mounted devices.
 
-- Step 3: Find out which device in the list refers to SD Card (usually /dev/mmcblk0p1 or /dev/ssd1) and unmount it with the command: 
+- Step 3: Find out which device in the list refers to SD Card (usually /dev/mmcblk0p1 or /dev/ssd1) and unmount it with the command:
 	umount /dev/mmcblk0p1
 		"mmcblk0p1"(or "ssd1") must be replaced for the SD Card device name.
 
 - Step 4: Access the folder that contains the OS image file and enter the command:
-	dd bs=4M if=2015-05-05-raspbian-wheezy.img of=/dev/mmcblk0, 
-		"mmcblk0"(or "ssd") is the SD Card device name, without partition (in this case mmcblk0(ou ssd), not "mmcblk0p1"(or "ssd1").  
+	dd bs=4M if=2015-05-05-raspbian-wheezy.img of=/dev/mmcblk0,
+		"mmcblk0"(or "ssd") is the SD Card device name, without partition (in this case mmcblk0(ou ssd), not "mmcblk0p1"(or "ssd1").
 	- Warning: Do not confunda with the HardDisk device, or it will destroy your OS!!!
 
 - Step 5: After finish the image writing mentioned in Step 4, before remove the SD Card from the card reader, enter the command:
 	sync
 		so, remove and insert it in Raspberry Pi, connecting to the internet with a network cable, a USB keyboard and a HDMI cable from a monitor in the Raspberry Pi board. Next, we must plug a 5V energy source in the Raspberry Pi with at least 700mA to turn the board on.
-		
+
 - Step 6: From this Step, all next Steps will be executed in Raspberry Pi without a laptop. In the first boot, the “Raspi-Config” menu will appear in the screen. We must configure the following items:
 	- Set the option Expand File System (If you do not use NOOBS !)
 	- Change User Password: Original user "pi", original password "raspberry"
@@ -169,7 +169,7 @@ APPENDIX A: Network configuration for static IP (eg. Simoes office)
 	-- Must be done always. The reboot erases all!!!
 	-- See Appendix C to make it stay configured
 	-- Everything between '<' and '>', must be replaced by connection values
-	
+
 	Enter the following command in the terminal:
 	sudo ifconfig eth0 <IP> netmask <MASCARA>
 		Eg:
@@ -185,13 +185,13 @@ APPENDIX A: Network configuration for static IP (eg. Simoes office)
 
 	Enter the following command in the terminal:
 	sudo nano /etc/resolv.conf
-		add line: 
+		add line:
 			nameserver 8.8.8.8
 		type:
 		Ctrl+O  -> Salvar
 		Ctrl+X  -> Sair
-		
-		If using VI: 
+
+		If using VI:
 			Xinga e Reza!!!
 			type "i" to add text
 			type ESC and :wq  to save and exit
@@ -204,7 +204,7 @@ APPENDIX A: Network configuration for static IP (eg. Simoes office)
 	Dentro da USP as portas baixas são bloqueadas, então, caso esteja tentando conectar de um cabo de rede de dentro da USP, executar no terminal o comando:
 	sudo nano /etc/ssh/sshd_config
 		---trocar de Port 22 pra Port 22000
-		
+
 
 
 APPENDIX B: To establish connection to RaspberryPi by SSH in a Laptop running Linux
@@ -212,12 +212,12 @@ APPENDIX B: To establish connection to RaspberryPi by SSH in a Laptop running Li
 In RaspberryPi:
 	Enter the following command in the terminal:
 	sudo nano /etc/network/interfaces
-	--search the following line 
-	
+	--search the following line
+
 		iface eth0 inet manual (or iface eth0 inet dhcp)
-	
+
 	--change to
-	
+
 		iface eth0 inet static
 			address 192.168.0.10
 			broadcast 192.168.0.255
@@ -225,9 +225,9 @@ In RaspberryPi:
 			netmask 255.255.255.0
 			gateway 192.168.0.1
 			dns-nameservers 8.8.8.8
-			
+
 		(and obviously comment the other lines in the file...)
-		
+
 		type:
 		Ctrl+O  -> Save
 		Ctrl+X  -> Exit
@@ -248,10 +248,10 @@ In the laptop, running linux:
 	sudo ifconfig eth0 192.168.0.1 netmask 255.255.255.0
 		Obs1.: 192.168.0.1   will be the laptop IP Address in the network
 		Obs2.: the laptop IP Address must have the same 3 fist numbers: eg. 192.168.0._
-	
+
 	Enter the command in terminal:
 	sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
-	
+
 
 To establish connection to RaspberryPi just plug a network cable between the laptop and the Rasp board and enter the command:
 	ssh pi@192.168.0.10 -p 22000	--> this is the IP Address that you have saved in the Raspberry interfaces file.
@@ -267,14 +267,14 @@ APPENDIX C - Static IP permanently after reboots
 
 	cat /etc/network/interfaces
 
-		The line . . . . 
+		The line . . . .
 			iface eth0 inet dhcp
 
 			- Implies that we're currently getting out IP address by DHCP, meaning it's being dynamically registered by the router. This is what we want to change!
 
 	B. Gathering Information
 
-- Fist of all we need to grab some information from our router and Pi. There's a couple of command we need to run to get this info. Have a pen and paper handy! . . . 
+- Fist of all we need to grab some information from our router and Pi. There's a couple of command we need to run to get this info. Have a pen and paper handy! . . .
 	ifconfig
 
 - This reveals your router information, the bit you want is after eth0 (the ethernet connection). . . .
@@ -288,7 +288,7 @@ APPENDIX C - Static IP permanently after reboots
 	Bcast –  192.168.1.255 (The Broadcast IP Range)
 	Mask –  255.255.255.0 (Subnet Mask Address)
 
-- We need a little more information before we proceed. Use the command. . . 
+- We need a little more information before we proceed. Use the command. . .
 
 	netstat -nr
 
@@ -313,7 +313,7 @@ APPENDIX C - Static IP permanently after reboots
 
 			iface eth0 inet static
 
-- Then directly below this line enter the following (Please Note. You will need your own addresses we gathered in Part B, more details below). . . . 
+- Then directly below this line enter the following (Please Note. You will need your own addresses we gathered in Part B, more details below). . . .
 
 	address 143.107.231.92
 	netmask 255.255.255.192
@@ -322,7 +322,7 @@ APPENDIX C - Static IP permanently after reboots
 	gateway 143.107.231.65
 	dns-nameservers 143.107.231.12 8.8.8.8
 
-- To clarify what each part means. . . . 
+- To clarify what each part means. . . .
 
 address – The address you want to give your Pi, this can be any IP in the network range, but it's usually advisable to go higher rather than lower, or you could end up logging different devices to the same IP! I've selected 192.168.1.81, as we're already registered to that address (denoted by 'inet addr'), but this can be any IP address from the range192.168.1.1 to 192.168.1.255.
 
@@ -330,20 +330,20 @@ netmask – The 'Mask' address we wrote down earlier.
 
 network – The router IP address, this is the 'Destination' Address was found earlier. You can also grab this off your router, it will say on the side somewhere.
 
-broadcast – The 'Bcast' address we wrote down earlier. 
+broadcast – The 'Bcast' address we wrote down earlier.
 
 gateway – This is the 'Gateway' address we found earlier.
 
 - So, it should look something like the above, but with your values! Remember to save before exit, CTRL+X (exit) then yes to save changes!
 
-	
+
 	D. Re-check Static IP Configuration
 
 - Remove any existing leases
 
 	sudo rm /var/lib/dhcp/*
 
-- Then we'll need to reboot and check your changes. . . 
+- Then we'll need to reboot and check your changes. . .
 
 	sudo reboot
 
@@ -386,18 +386,18 @@ Edit with: sudo nano /etc/network/interfaces
 	-->> restart the network stuff without need reboot (That did not work for me!!!!!)!:
 		sudo /etc/init.d/networking restart
 
-		
-		
+
+
 APPENDIX D: Configure RaspberryPi to get a DHCP address from your router automatic
 
 	comment all other lines referent to eth0 (ex. iface eth0 inet static ...)
 	Include those tree lines:
-		auto eth0 
+		auto eth0
 		allow-hotplug eth0
 		iface eth0 inet dhcp
-		
-		
-		
+
+
+
 X------------------X-------------------X
 			SIMOES' GUIDE
 X------------------X-------------------X
@@ -407,14 +407,17 @@ X------------------X-------------------X
 
 
 	GCC : gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard hello.c -o hello.exe
-	
+
+    OBS: The options -mfpu and -mfloat-abi tell GCC to compile the program to use the hardware floating point unit - FPU - rather than
+         doing floating point calculations using software. The program will run a tad bit faster this way.
+
 	Create a file that overwrite GCC and you don't have to enter this command line every time you want do this:
-	
+
 	a)Create a new file with the following contents:
 
 		#!/bin/sh
 		exec /usr/bin/gcc "$@" -march=armv7-a -mfpu=vfp -mfloat-abi=hard
-		
+
 	--Change /usr/bin/gcc to your actual compiler if that's not right on your system.
 
 	b)Save it as /home/pi/bin/gcc.
@@ -426,17 +429,17 @@ X------------------X-------------------X
 
 	e)Add /home/pi/bin to the start of your path:
 		export PATH=/home/pi/bin:$PATH
-	
+
 	e)Compile your project. Whenever your new scripts are on the path they will override whatever the makefile says.
 
 	gcc --help
 	gcc --target-help             -->  Help com parâmetros de otimização como o march
 - Se botar -v  na linha de comando pra compilar, ele da um monte de mensagems dizendo tudo que ta fazendo!!
 	- Assim pode-se conferir se pegou os parâmetros do Arm7
-	
-- Ctr-Alt-Backspace   -->  Logout 
+
+- Ctr-Alt-Backspace   -->  Logout
 - Ctr-Alt-F3   -->  Terminate X server and move to terminal
-- startx       -->  Strart the Graphical User Interface (GUI) 
+- startx       -->  Strart the Graphical User Interface (GUI)
 
 2) Firefox   --> O Firefox tem outra distribuição para a Raspberry, chama Iceweasel
 	sudu apt-get install iceweasel
@@ -482,8 +485,8 @@ Code Exemple:
 
 		gcc -Wall -o blink blink.c -lwiringPi				(Do not forget to insert -O3 -march= .......)
 		sudo ./blink
-		
-		
+
+
 
 4) How to configure Serial Interface to Arduino
 
@@ -512,5 +515,5 @@ Code Exemple:
 
 	Then change the software.c   from:
 	fd = serialOpen ("/dev/ttyAMA0", 115200)   to:
-	fd = serialOpen ("/dev/serial0", 115200)   to:
-	  
+	fd = serialOpen ("/dev/serial0", 115200)
+
