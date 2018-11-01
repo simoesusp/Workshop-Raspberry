@@ -3,7 +3,6 @@
 ################ Facebook Group ################
 https://www.facebook.com/groups/raspbcc/?fref=ts
 ################################################
-Next meeting TODAY (19/08/2016): 08:00h at Lab 6306
 
 Repository of examples and tutorials for projects combining RaspberryPi + Arduino.
 
@@ -11,6 +10,8 @@ Created and maintained by a group of students of the University of São Paulo.
 
 With RaspberryPi 2, do not forget to configure GCC to compile optimizing to its ARM7: 
 gcc -O3 -march=armv7-a -mfpu=vfp -mfloat-abi=hard -Wall test.c -o test
+
+Before connecting any arduino to raspberry GPIO, be assured that your arduino is programmed with a safe code - connecting the pins without programming can damage your raspberry through a previous unknown program running in arduino.
 
 1-	Under folder Raspbian: you will find configuration files and tips to set Debian up correctly for the RAspberryPi2 board.
 
